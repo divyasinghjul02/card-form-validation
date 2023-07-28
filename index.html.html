@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Card Payment Gateway</h1>
+        <hr>
+        <div class="container-2">
+        <div class="box1">
+               <h2>Payment Details</h2>
+               <nav>
+                <img src="img/american card.webp" alt="">
+                 <img src="img/master card.jpg" alt="">
+                 <img src="img/VISA card.jpg" alt="">
+                 <img src="img/rupee.jpg" alt="">
+                </nav>
+       </div>
+       <div class="box2">
+            <h3 class="cardnumber">CARD NUMBER</h3>
+
+          <div class="wrap-1">
+                 <input class="search1" type="number" placeholder="Valid Card Number"><span></span>
+                 <!-- <button class="btn1"><span id="card" class="fa fa-credit-card"></span></button> -->
+          </div>
+
+         <span class="blank1"></span>
+
+             <div class="wrap-2">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>EXPIRATION DATE</h3>
+                        <input  class="search2" type="month year" placeholder="MM/YY"><span></span>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="cvcode">CV CODE</h3>
+                        <input class="search3" type="number" placeholder="CVC"><span></span>
+                    </div>
+                </div>
+              </div>
+
+                <h3 class="card owner">
+                    CARD OWNER
+                </h3>
+                <input class="search4" type="text" placeholder="Card Owner Name">
+                <br>
+                <button class="btn2">
+                    Confirm Payment
+                 </button>
+                
+    
+         
+        </div>
+     </div>
+
+   <script>
+    "use strict";
+
+let form=document.querySelector("form")
+
+let x=document.querySelector("#cardNumber")
+
+
+
+x.addEventListener("input",function(){
+    
+    if(/^4\d{15}/.test(this.value)){
+    this.nextElementSibling.style.color="green"
+    this.nextElementSibling.textContent="visa";
+} else if (/^5\d{15}/.test(this.value)){
+        this.nextElementSibling.textContent="master card";
+    } else if (/^3\d{15}/.test(this.value)){
+        this.nextElementSibling.textContent="american";
+    } else if (/^6\d{15}/.test(this.value)){
+        
+        this.nextElementSibling.textContent="rupay";
+    }else{
+        this.nextElementSibling.style.color="red";
+
+        this.nextElementSibling.textContent="invalid card";
+
+    }
+
+})
+
+document.querySelector("#expDate").addEventListener("input", function(){
+    if(/^(0[1-9]|1[0-2])\/(20\d{2}|[3-9]\d)$/.test(this.value)){
+        this.nextElementSibling.textContent="valid"
+    }else{
+        this.nextElementSibling.textContent="invalid"
+    }
+})
+
+document.querySelector("#cvNumber").addEventListener("input", function(){
+    if(/^\d{3}$/.test(this.value)){
+        this.nextElementSibling.textContent="valid"
+    }else{this.nextElementSibling.textContent="invalid or must be 3 digit"}
+})
+
+document.querySelector("#cardOwner").addEventListener("input", function(){
+    if(/[a-zA-Z]{3}/.test(this.value)){
+        this.nextElementSibling.textContent="valid name"
+    }else{
+        this.nextElementSibling.textContent="invalid name"
+    }
+})
+   </script>
+
+
+</body>
+</html>
